@@ -1,14 +1,19 @@
 package com.allometry.org.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by kuldeep.bisen on 7/15/2017.
  */
+@Document(collection = "project")
 public class Project {
 
-    private int id;
+    @Id
+    private String id;
     private String projectName;
     private Date startDate;
     private int noOfResources;
@@ -28,11 +33,11 @@ public class Project {
         this.client = client;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -109,18 +114,7 @@ public class Project {
         return client != null ? client.equals(project.client) : project.client == null;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (projectName != null ? projectName.hashCode() : 0);
-        result = 31 * result + (startDate != null ? startDate.hashCode() : 0);
-        result = 31 * result + noOfResources;
-        result = 31 * result + (resources != null ? resources.hashCode() : 0);
-        result = 31 * result + (created != null ? created.hashCode() : 0);
-        result = 31 * result + (modified != null ? modified.hashCode() : 0);
-        result = 31 * result + (client != null ? client.hashCode() : 0);
-        return result;
-    }
+
 
     @Override
     public String toString() {

@@ -1,14 +1,20 @@
 package com.allometry.org.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by kuldeep.bisen on 7/15/2017.
  */
-public class Role {
 
-    private int id;
+@Document(collection = "role")
+public class Role {
+@Id
+    private String id;
+
     private String roleName;
     private Date created;
     private Date modified;
@@ -21,11 +27,11 @@ public class Role {
         this.listOfEmployee = listOfEmployee;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -75,15 +81,6 @@ public class Role {
         return listOfEmployee != null ? listOfEmployee.equals(role.listOfEmployee) : role.listOfEmployee == null;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (roleName != null ? roleName.hashCode() : 0);
-        result = 31 * result + (created != null ? created.hashCode() : 0);
-        result = 31 * result + (modified != null ? modified.hashCode() : 0);
-        result = 31 * result + (listOfEmployee != null ? listOfEmployee.hashCode() : 0);
-        return result;
-    }
 
     @Override
     public String toString() {

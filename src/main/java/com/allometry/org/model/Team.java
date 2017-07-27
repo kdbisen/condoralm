@@ -9,7 +9,7 @@ import java.util.Date;
  * Created by kuldeep.bisen on 7/15/2017.
  */
 
-@Document
+@Document(collection = "team")
 public class Team {
     @Id
     private int id;

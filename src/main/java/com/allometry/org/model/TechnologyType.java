@@ -1,12 +1,18 @@
 package com.allometry.org.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 
 /**
  * Created by kuldeep.bisen on 7/15/2017.
  */
+
+@Document(collection = "technologyType")
 public class TechnologyType {
 
+    @Id
     private int id;
     private  String type;
     private Date created;

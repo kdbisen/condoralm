@@ -1,5 +1,8 @@
 package com.allometry.org.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 import java.util.List;
 
@@ -7,10 +10,10 @@ import java.util.List;
  * Created by kuldeep.bisen on 7/10/2017.
  */
 
-
+@Document(collection = "employee")
 public class Employee {
-
-    private int id;
+@Id
+    private String id;
     private String firstName;
     private String lastName;
     private Department  department;
@@ -45,11 +48,11 @@ public class Employee {
         this.modified = modified;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -202,26 +205,7 @@ public class Employee {
         return modified != null ? modified.equals(employee.modified) : employee.modified == null;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (department != null ? department.hashCode() : 0);
-        result = 31 * result + (empId != null ? empId.hashCode() : 0);
-        result = 31 * result + (designation != null ? designation.hashCode() : 0);
-        result = 31 * result + (rolde != null ? rolde.hashCode() : 0);
-        result = 31 * result + yearOfExperience;
-        result = 31 * result + (team != null ? team.hashCode() : 0);
-        result = 31 * result + currentProjectId;
-        result = 31 * result + (techonologiesKnows != null ? techonologiesKnows.hashCode() : 0);
-        result = 31 * result + (oldProjects != null ? oldProjects.hashCode() : 0);
-        result = 31 * result + (dateOfJoining != null ? dateOfJoining.hashCode() : 0);
-        result = 31 * result + (dob != null ? dob.hashCode() : 0);
-        result = 31 * result + (created != null ? created.hashCode() : 0);
-        result = 31 * result + (modified != null ? modified.hashCode() : 0);
-        return result;
-    }
+
 
     @Override
     public String toString() {

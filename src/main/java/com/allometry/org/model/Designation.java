@@ -1,13 +1,18 @@
 package com.allometry.org.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Date;
 
 /**
  * Created by kuldeep.bisen on 7/15/2017.
  */
+@Document(collection = "designation")
 public class Designation {
 
-    private int id;
+    @Id
+    private String id;
     private String designation;
     private String specializedFor;
     private Date created;
@@ -20,11 +25,11 @@ public class Designation {
         this.modified = modified;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -75,15 +80,7 @@ public class Designation {
         return modified != null ? modified.equals(that.modified) : that.modified == null;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (designation != null ? designation.hashCode() : 0);
-        result = 31 * result + (specializedFor != null ? specializedFor.hashCode() : 0);
-        result = 31 * result + (created != null ? created.hashCode() : 0);
-        result = 31 * result + (modified != null ? modified.hashCode() : 0);
-        return result;
-    }
+
 
     @Override
     public String toString() {

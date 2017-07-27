@@ -1,34 +1,40 @@
 package com.allometry.org.model;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by kuldeep.bisen on 7/15/2017.
  */
+
+@Document(collection = "technology")
 public class Technology {
 
-    private int id;
+    private String id;
+    @Field(value = "technology_name")
+
     private String technologyName;
     private  String Type;
     private Date created;
     private Date modified;
-    private List<Employee> listOfEmployee;
 
 
-    public Technology(String technologyName, String type, Date created, Date modified, List<Employee> listOfEmployee) {
+    public Technology(String technologyName, String type, Date created, Date modified ) {
         this.technologyName = technologyName;
         Type = type;
         this.created = created;
         this.modified = modified;
-        this.listOfEmployee = listOfEmployee;
+
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -64,40 +70,8 @@ public class Technology {
         this.modified = modified;
     }
 
-    public List<Employee> getListOfEmployee() {
-        return listOfEmployee;
-    }
 
-    public void setListOfEmployee(List<Employee> listOfEmployee) {
-        this.listOfEmployee = listOfEmployee;
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Technology that = (Technology) o;
-
-        if (id != that.id) return false;
-        if (technologyName != null ? !technologyName.equals(that.technologyName) : that.technologyName != null)
-            return false;
-        if (Type != null ? !Type.equals(that.Type) : that.Type != null) return false;
-        if (created != null ? !created.equals(that.created) : that.created != null) return false;
-        if (modified != null ? !modified.equals(that.modified) : that.modified != null) return false;
-        return listOfEmployee != null ? listOfEmployee.equals(that.listOfEmployee) : that.listOfEmployee == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (technologyName != null ? technologyName.hashCode() : 0);
-        result = 31 * result + (Type != null ? Type.hashCode() : 0);
-        result = 31 * result + (created != null ? created.hashCode() : 0);
-        result = 31 * result + (modified != null ? modified.hashCode() : 0);
-        result = 31 * result + (listOfEmployee != null ? listOfEmployee.hashCode() : 0);
-        return result;
-    }
 
     @Override
     public String toString() {
@@ -107,7 +81,6 @@ public class Technology {
                 ", Type='" + Type + '\'' +
                 ", created=" + created +
                 ", modified=" + modified +
-                ", listOfEmployee=" + listOfEmployee +
                 '}';
     }
 }
