@@ -19,6 +19,7 @@ public class DomainService {
     public void addDomain(Domain domain){
 
         domainRepository.save(domain);
+
     }
     public List<Domain> getAllDomain(){
 

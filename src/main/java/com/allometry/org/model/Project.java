@@ -17,17 +17,17 @@ public class Project {
     private String projectName;
     private Date startDate;
     private int noOfResources;
-    List<Employee> resources;
+
     private Date created;
     private Date modified;
     private Client client;
 
 
-    public Project(String projectName, Date startDate, int noOfResources, List<Employee> resources, Date created, Date modified, Client client) {
+    public Project(String projectName, Date startDate, int noOfResources,   Date created, Date modified, Client client) {
         this.projectName = projectName;
         this.startDate = startDate;
         this.noOfResources = noOfResources;
-        this.resources = resources;
+
         this.created = created;
         this.modified = modified;
         this.client = client;
@@ -65,13 +65,7 @@ public class Project {
         this.noOfResources = noOfResources;
     }
 
-    public List<Employee> getResources() {
-        return resources;
-    }
 
-    public void setResources(List<Employee> resources) {
-        this.resources = resources;
-    }
 
     public Date getCreated() {
         return created;
@@ -108,7 +102,7 @@ public class Project {
         if (noOfResources != project.noOfResources) return false;
         if (projectName != null ? !projectName.equals(project.projectName) : project.projectName != null) return false;
         if (startDate != null ? !startDate.equals(project.startDate) : project.startDate != null) return false;
-        if (resources != null ? !resources.equals(project.resources) : project.resources != null) return false;
+
         if (created != null ? !created.equals(project.created) : project.created != null) return false;
         if (modified != null ? !modified.equals(project.modified) : project.modified != null) return false;
         return client != null ? client.equals(project.client) : project.client == null;
@@ -123,7 +117,7 @@ public class Project {
                 ", projectName='" + projectName + '\'' +
                 ", startDate=" + startDate +
                 ", noOfResources=" + noOfResources +
-                ", resources=" + resources +
+
                 ", created=" + created +
                 ", modified=" + modified +
                 ", client=" + client +
