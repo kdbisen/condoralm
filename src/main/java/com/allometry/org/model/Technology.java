@@ -15,16 +15,15 @@ public class Technology {
 
     private String id;
     @Field(value = "technology_name")
-
     private String technologyName;
-    private  String Type;
+    private  String type;
     private Date created;
     private Date modified;
 
 
     public Technology(String technologyName, String type, Date created, Date modified ) {
         this.technologyName = technologyName;
-        Type = type;
+        this.type = type;
         this.created = created;
         this.modified = modified;
 
@@ -47,11 +46,11 @@ public class Technology {
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 
     public void setType(String type) {
-        Type = type;
+        this.type = type;
     }
 
     public Date getCreated() {
@@ -71,14 +70,16 @@ public class Technology {
     }
 
 
+    public Technology() {
 
+    }
 
     @Override
     public String toString() {
         return "Technology{" +
                 "id=" + id +
                 ", technologyName='" + technologyName + '\'' +
-                ", Type='" + Type + '\'' +
+                ", Type='" + type + '\'' +
                 ", created=" + created +
                 ", modified=" + modified +
                 '}';

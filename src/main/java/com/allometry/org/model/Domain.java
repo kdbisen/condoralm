@@ -18,6 +18,9 @@ public class Domain {
     private Date created;
     private Date modified;
 
+    public Domain() {
+    }
+
     public Domain(String domainName, Date created, Date modified) {
         this.domainName = domainName;
         this.created = created;

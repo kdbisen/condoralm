@@ -17,7 +17,6 @@ public class Project {
     private String projectName;
     private Date startDate;
     private int noOfResources;
-
     private Date created;
     private Date modified;
     private Client client;

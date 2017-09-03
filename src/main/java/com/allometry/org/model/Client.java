@@ -20,15 +20,15 @@ public class Client {
     private String clientName;
     private String location;
     private Domain domain;
-    private List<Project> projects;
+
     private Date created;
     private Date modified;
 
-    public Client(String clientName, String location, Domain domain, List<Project> projects, Date created, Date modified) {
+    public Client(String clientName, String location, Domain domain,   Date created, Date modified) {
         this.clientName = clientName;
         this.location = location;
         this.domain = domain;
-        this.projects = projects;
+
         this.created = created;
         this.modified = modified;
     }
@@ -65,13 +65,7 @@ public class Client {
         this.domain = domain;
     }
 
-    public List<Project> getProjects() {
-        return projects;
-    }
 
-    public void setProjects(List<Project> projects) {
-        this.projects = projects;
-    }
 
     public Date getCreated() {
         return created;
@@ -100,11 +94,14 @@ public class Client {
         if (clientName != null ? !clientName.equals(client.clientName) : client.clientName != null) return false;
         if (location != null ? !location.equals(client.location) : client.location != null) return false;
         if (domain != null ? !domain.equals(client.domain) : client.domain != null) return false;
-        if (projects != null ? !projects.equals(client.projects) : client.projects != null) return false;
+
         if (created != null ? !created.equals(client.created) : client.created != null) return false;
         return modified != null ? modified.equals(client.modified) : client.modified == null;
     }
 
+    public Client( ) {
+
+    }
 
     @Override
     public String toString() {
@@ -113,7 +110,7 @@ public class Client {
                 ", clientName='" + clientName + '\'' +
                 ", location='" + location + '\'' +
                 ", domain=" + domain +
-                ", projects=" + projects +
+
                 ", created=" + created +
                 ", modified=" + modified +
                 '}';

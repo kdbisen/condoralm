@@ -1,6 +1,7 @@
 package com.allometry.org.Controller;
 
 
+import com.allometry.org.model.Authentication;
 import com.allometry.org.model.Domain;
 import com.allometry.org.model.User;
 import com.allometry.org.service.UserService;
@@ -21,14 +22,28 @@ public class LoginController {
     private UserService userService;
 
     @RequestMapping(value = "/api/login", method = RequestMethod.POST)
-    public boolean login(@RequestBody User user) {
+    public Authentication login(@RequestBody User user) {
+        Authentication authentication = null;
         System.out.println("login controller"+user.toString());
         User userr = userService.findByUsernameAndPassword(user.getUsername(),user.getPassword());
-        if (userr!=null)
-        if(userr.getUsername().equalsIgnoreCase(user.getUsername()) && userr.getPassword().equalsIgnoreCase(user.getPassword())){
-            return  true;
+        if (userr!=null){
+            if(userr.getUsername().equalsIgnoreCase(user.getUsername()) && userr.getPassword().equalsIgnoreCase(user.getPassword())){
+
+                authentication = new Authentication(true,userr);
+                return  authentication;
+            }else{
+
+                authentication = new Authentication(false,null);
+                return  authentication;
+            }
+        }else {
+
+            authentication = new Authentication(false,null);
+            return  authentication;
+
         }
-        return false;
+
+
     }
 
 
