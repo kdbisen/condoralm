@@ -43,10 +43,14 @@ public class UserService {
         return  userRepository.findAll();
     }
 
-    public void addUser(User user){
+    public User addUser(User user){
 
-        userRepository.insert(user);
+       return userRepository.save(user);
     }
 
+
+    public User getUserById(String id){
+        return userRepository.findOne(id);
+    }
 
 }

@@ -4,6 +4,8 @@ import com.allometry.org.model.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProjectService {
 
@@ -14,5 +16,10 @@ public class ProjectService {
 
         projectRepository.save(project);
 
+    }
+
+    public List<Project> getAllProjects(){
+
+        return  projectRepository.findAll();
     }
 }

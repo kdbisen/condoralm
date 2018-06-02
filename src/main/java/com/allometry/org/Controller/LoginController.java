@@ -21,6 +21,14 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping(value = "/api/register", method = RequestMethod.POST)
+    public User register(@RequestBody User user) {
+        Authentication authentication = null;
+        System.out.println("login controller"+user.toString());
+        return userService.addUser(user);
+    }
+
+
     @RequestMapping(value = "/api/login", method = RequestMethod.POST)
     public Authentication login(@RequestBody User user) {
         Authentication authentication = null;
@@ -50,23 +58,31 @@ public class LoginController {
     @RequestMapping(value = "/api/users", method = RequestMethod.GET)
     public List<User>  alllogin() {
         System.out.println("login controller");
-     return   userService.fildAll();
+        return   userService.fildAll();
     }
 
 
-@GetMapping("/api/user")
+    @GetMapping("/api/user")
     public User getUser(){
 
         return new User("kdbisen", "password","mymail@domain.com");
-}
+    }
 
+
+
+    @GetMapping("/api/user/{id}")
+    public User getUserName(@PathVariable("id")  String id){
+
+
+        return userService.getUserById(id);
+    }
 
     @RequestMapping(value = "/api/adduser" ,method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     public User addUser(@RequestBody  User user){
 
 
         userService.addUser(user);
-        System.out.println("#####################"+user.toString());
+
         return user;
     }
 

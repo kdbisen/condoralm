@@ -30,6 +30,14 @@ public class Employee {
     private Date created;
     private Date modified;
 
+    public Employee() {
+    }
+
+    public Employee(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public Employee(String firstName, String lastName, Department department, String empId, Designation designation, Role rolde, int yearOfExperience, Team team, int currentProjectId, List<Technology> techonologiesKnows, List<Project> oldProjects, Date dateOfJoining, Date dob, Date created, Date modified) {
         this.firstName = firstName;
         this.lastName = lastName;
