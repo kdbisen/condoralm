@@ -1,5 +1,6 @@
 package com.allometry.org.model;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,6 +12,7 @@ public class User implements Serializable{
 
     @Id
     String _id;
+    @Email
     String username;
     String password;
     String email;

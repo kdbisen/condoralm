@@ -4,13 +4,12 @@ package com.allometry.org;
 import com.allometry.org.model.*;
 import com.allometry.org.service.*;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,7 +17,7 @@ import java.util.List;
 /**
  * Created by kuldeep.bisen on 7/10/2017.
  */
-
+@Slf4j
 @RestController
 @CrossOrigin(origins = "*")
 public class MyRestController {
@@ -42,7 +41,6 @@ public class MyRestController {
     private AnswerService answerService;
     @Autowired
     private VoteService voteService;
-    Logger log = LoggerFactory.getLogger(MyRestController.class);
 
 
 
@@ -56,7 +54,7 @@ public class MyRestController {
 
     @PostMapping("/api/castvote")
     public  void castVote(@RequestBody Vote str){
-        System.out.println(str.toString());
+        log.info(str.toString());
 
         voteService.castVote(str);
     }
@@ -71,7 +69,7 @@ public class MyRestController {
     public ResponseEntity<List<Employee>> myEmpl() {
         List<Employee> lst = new ArrayList<>();
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(httpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+        httpHeaders.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
         httpHeaders.setAccessControlAllowCredentials(true);
         ResponseEntity<List<Employee>> listEntity = new ResponseEntity<List<Employee>>(lst, httpHeaders, HttpStatus.OK);
         return listEntity;
@@ -89,11 +87,11 @@ public class MyRestController {
     @PostMapping("/api/answer")
     public  void addAnswer(@RequestBody Answer str){
 
-        System.out.println(str.toString());
+        log.info(str.toString());
         str.setCreated(new Date());
         str.setModified(new Date());
         str.setUser(userService.getUserById(str.getUser_id()));
-        System.out.println(str.toString());
+        log.info(str.toString());
         answerService.save(str);
     }
 
@@ -139,7 +137,7 @@ public class MyRestController {
     @PostMapping("/api/question")
     public  Question addQuestion(@RequestBody Question question  ){
 
-        System.out.println(question);
+        log.info(question.toString());
         question.setCreated(new Date());
         question.setModified(new Date());
         return questionService.save(question);
@@ -198,7 +196,7 @@ public class MyRestController {
 
         List<Domain> lst = domainService.getAllDomain();
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(httpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+          httpHeaders.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
         httpHeaders.setAccessControlAllowCredentials(true);
         ResponseEntity<List<Domain>> listEntity = new ResponseEntity<List<Domain>>(lst, httpHeaders, HttpStatus.OK);
         return listEntity;
@@ -210,7 +208,7 @@ public class MyRestController {
     public ResponseEntity<List<Client>> getAallClients() {
         List<Client> lst = clientService.getAllClients();
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(httpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+        httpHeaders.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
         httpHeaders.setAccessControlAllowCredentials(true);
         ResponseEntity<List<Client>> listEntity = new ResponseEntity<List<Client>>(lst, httpHeaders, HttpStatus.OK);
         return listEntity;
@@ -223,7 +221,7 @@ public class MyRestController {
 
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(httpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+        httpHeaders.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
         httpHeaders.setAccessControlAllowCredentials(true);
         ResponseEntity<Question> listEntity = new ResponseEntity<Question>(questionService.findQuestion(questionid), httpHeaders, HttpStatus.OK);
         return listEntity;
