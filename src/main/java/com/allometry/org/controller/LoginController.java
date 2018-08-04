@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ *
+ */
 @RestController
 @Slf4j
 @CrossOrigin(origins = "*")
@@ -66,7 +69,6 @@ public class LoginController {
 
         return new User("kdbisen", "password","mymail@domain.com");
     }
-
 
 
     @GetMapping("/api/user/{id}")
