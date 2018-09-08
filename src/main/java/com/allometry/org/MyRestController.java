@@ -219,11 +219,7 @@ public class MyRestController {
     @RequestMapping(value = "/api/question/{questionid}", method = RequestMethod.GET)
     public ResponseEntity<Question> getQuestion(@PathVariable("questionid") String questionid) {
 
-
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
-        httpHeaders.setAccessControlAllowCredentials(true);
-        ResponseEntity<Question> listEntity = new ResponseEntity<Question>(questionService.findQuestion(questionid), httpHeaders, HttpStatus.OK);
+        ResponseEntity<Question> listEntity = new ResponseEntity<Question>(questionService.findQuestion(questionid), HttpStatus.OK);
         return listEntity;
 
     }

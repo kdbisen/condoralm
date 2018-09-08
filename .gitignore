@@ -22,3 +22,8 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+src/main/resources/static/0.ea1150cfe0ae946cbd5c.js
+src/main/resources/static/1.f33bd01a714001382f79.js
+src/main/resources/static/main.e2eeb705785a255b0c7a.js
+src/main/resources/static/runtime.14bc964606e6dbec7842.js
+src/main/resources/static/styles.0f4c6520899edca1471d.css
