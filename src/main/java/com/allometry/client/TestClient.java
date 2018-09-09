@@ -20,7 +20,7 @@ public class TestClient {
     public static void testClient(){
 
         RestTemplate restTemplate = new RestTemplate();
-        User emp = new User("sswwswwswsws","sasa","saasasas","asasasas");
+        User emp = new User("sswwswwswsws","saasasas","asasasas");
         restTemplate.postForEntity(SERVER_URI,emp,User.class);
       //  User response = restTemplate.postForObject(SERVER_URI, emp, User.class);
     }

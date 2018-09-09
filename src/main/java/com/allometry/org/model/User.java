@@ -1,38 +1,43 @@
 package com.allometry.org.model;
 
+import lombok.Data;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Document(collection = "user")
+@Data
 public class User implements Serializable{
     private static final long serialVersionUID = -7788619177798333712L;
 
     @Id
+
     String _id;
     @Email
     String username;
+    @NotNull
+    String fullname;
+    @NotNull
     String password;
+    @NotNull
+    @Email
     String email;
 
     public User() {
 
     }
 
-    public User(String _id, String username, String password, String email) {
-        this._id = _id;
-        this.username = username;
+    public User(String fullname, String password, String email) {
+
+        this.fullname = fullname;
         this.password = password;
         this.email = email;
     }
 
-    public User(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
+
 
     public String get_id() {
         return _id;
